@@ -22,6 +22,19 @@ export async function getCompany(id){
   return company
 }
 
+export async function createJob({title, description}){
+  const query = gql`
+    mutation CreateJob($input: CreateJobInput!) {
+      job: createJob(input: $input){
+        id,
+      }
+    }
+  `
+
+  const { job } = await client.request(query, {input: { title, description }});
+  return job
+}
+
 export async function getJob(id) {
   const query = gql`
     query JobById($id: ID!) {
