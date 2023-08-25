@@ -9,10 +9,8 @@ function JobPage() {
   const [job, setJob] = useState();
 
   useEffect(() => {
-    console.log({jobId});
     getJob(jobId).then(setJob);
   }, [jobId])
-  console.log({job});
   if(!job) {
     return <div>Loading...</div>
   }
